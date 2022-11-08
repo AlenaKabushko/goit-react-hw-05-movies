@@ -1,7 +1,7 @@
 import TrendItem from 'components/TrendItem/TrendItem';
 
 function TrendList({ trendMovies }) {
-  console.log(trendMovies, 'from ul');
+  // console.log(trendMovies, 'from ul');
   return (
     <ul>
       {trendMovies.map(movie => (

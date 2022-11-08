@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
+
 function TrendItem({ movie }) {
   return (
-    <li>
-      <a href="/">{movie.title ?? movie.name}</a>
-    </li>
+    <Link to={`/movies/${movie.id}`}>
+      <li>{movie.title ?? movie.name}</li>
+    </Link>
   );
 }
 
