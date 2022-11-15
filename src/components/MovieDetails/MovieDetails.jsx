@@ -1,5 +1,5 @@
 import { useParams, Outlet, useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { RequestMovieDetails } from '../Request/Request';
 import MovieDescr from '../MovieDescr/MovieDescr';
 import { Notify } from 'notiflix';
@@ -12,6 +12,7 @@ function MovieDetails() {
   const [details, setDetails] = useState(null);
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
+  console.log(backLinkHref);
 
   useEffect(() => {
     Loading.pulse('Loading');
@@ -36,11 +37,18 @@ function MovieDetails() {
       <LinkStyle to={backLinkHref}>Back</LinkStyle>
       <MovieDescr data={details} />
       <Box>
-        <LinkStyle to={`cast`}>Cast</LinkStyle>
-        <LinkStyle to={`reviews`}>Reviews</LinkStyle>
+        <LinkStyle to={`cast`} state={{ from: location }}>
+          Cast
+        </LinkStyle>
+        <LinkStyle to={`reviews`} state={{ from: location }}>
+          Reviews
+        </LinkStyle>
       </Box>
 
-      <Outlet />
+      <Suspense fallback={Loading.pulse('Loading')}>
+        {Loading.remove()}
+        <Outlet />
+      </Suspense>
     </Box>
   );
 }

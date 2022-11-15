@@ -5,16 +5,17 @@ import PaginatedItems from '../Pagination/Pagination';
 import { Notify } from 'notiflix';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
-function SearchDetails({ inputMovie }) {
+function SearchDetails({ query }) {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
+  console.log(query);
 
   useEffect(() => {
-    if (!inputMovie) return;
+    if (!query) return;
     Loading.pulse('Loading');
 
-    RequestSearch(inputMovie, page)
+    RequestSearch(query, page)
       .then(response => {
         setMovies(response.results);
         setTotalPage(response.total_pages);
@@ -26,7 +27,7 @@ function SearchDetails({ inputMovie }) {
         )
       )
       .finally(Loading.remove());
-  }, [inputMovie, page]);
+  }, [page, query]);
 
   const onLoadMore = e => {
     return setPage(e.selected + 1);
@@ -50,5 +51,5 @@ function SearchDetails({ inputMovie }) {
 export default SearchDetails;
 
 SearchDetails.propTypes = {
-  inputMovie: PropTypes.string,
+  query: PropTypes.string,
 };
