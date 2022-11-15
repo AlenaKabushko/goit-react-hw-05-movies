@@ -24,4 +24,5 @@ ul
 
 .paginate ul li{
   margin-right: 15px;
+  cursor: pointer;
 }

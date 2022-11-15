@@ -9,7 +9,6 @@ function SearchDetails({ query }) {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
-  console.log(query);
 
   useEffect(() => {
     if (!query) return;

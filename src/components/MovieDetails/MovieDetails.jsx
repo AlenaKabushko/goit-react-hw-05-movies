@@ -12,7 +12,6 @@ function MovieDetails() {
   const [details, setDetails] = useState(null);
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
-  console.log(backLinkHref);
 
   useEffect(() => {
     Loading.pulse('Loading');
@@ -37,10 +36,10 @@ function MovieDetails() {
       <LinkStyle to={backLinkHref}>Back</LinkStyle>
       <MovieDescr data={details} />
       <Box>
-        <LinkStyle to={`cast`} state={{ from: location }}>
+        <LinkStyle to={`cast`} state={location.state}>
           Cast
         </LinkStyle>
-        <LinkStyle to={`reviews`} state={{ from: location }}>
+        <LinkStyle to={`reviews`} state={location.state}>
           Reviews
         </LinkStyle>
       </Box>

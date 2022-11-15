@@ -1,11 +1,8 @@
-// import { useState } from 'react';
 import Box from '../Box';
-// import SearchForm from '../SearchForm/SearchForm';
 import SearchDetails from '../SearchDetails/SearchDetails';
-
 import { Formik } from 'formik';
 import { useSearchParams } from 'react-router-dom';
-import { FormStyle, FieldStyle } from '../SearchForm/SearchForm.styled';
+import { FormStyle, FieldStyle } from './Form.styled';
 import { BsSearch } from 'react-icons/bs';
 
 function Search() {
@@ -39,16 +36,5 @@ function Search() {
     </Box>
   );
 }
-
-// function Search() {
-//   const [inputMovie, setInputMovie] = useState(null);
-
-//   return (
-//     <Box bg="#ffe4e4" flexDirection="column">
-//       <SearchForm onInput={setInputMovie} />
-//       {inputMovie && <SearchDetails inputMovie={inputMovie} />}
-//     </Box>
-//   );
-// }
 
 export default Search;

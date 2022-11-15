@@ -7,7 +7,7 @@ function TrendItem({ movie }) {
   const location = useLocation();
 
   const { id, title, name, poster_path } = movie;
-  
+
   return (
     <Link to={`/movies/${id}`} state={{ from: location }}>
       <ItemStyle>
